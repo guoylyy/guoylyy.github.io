@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>Globit Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2015/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:title" content="Globit Blog">
+<meta property="og:url" content="http://guoylyy.github.io/archives/2015/index.html">
+<meta property="og:site_name" content="Globit Blog">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Globit Blog">
 <meta name="twitter:description">
   
   
@@ -28,7 +28,7 @@
     <header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
-      <a href="/" id="logo"><i class="logo"></i><span class="site-title">Hexo</span></a>
+      <a href="/" id="logo"><i class="logo"></i><span class="site-title">Globit Blog</span></a>
       <nav id="main-nav">
         
       </nav>
@@ -38,7 +38,7 @@
         </div>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="q" value="site:http://guoylyy.github.io"></form>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
       <tr>
       
       <td>
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="q" value="site:http://guoylyy.github.io"></form>
       </td>
       </tr>
     </table>
@@ -65,7 +65,7 @@
   <div class="inner profile-inner">
   	<div class="base-info profile-block">
 		  <img id="avatar" src="/">
-      <h2 id="name">John Doe</h2>
+      <h2 id="name">globit</h2>
       <h3 id="title">undefined</h3>
       <span id="location"><i class="fa fa-map-marker"></i>undefined</span>
       <a id="follow" href="undefined">关注我</a>
@@ -100,7 +100,7 @@
           <a href="/archives/2015" class="archive-year">2015</a>
         </div>
     
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-springmvc-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -108,15 +108,15 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/04/test/">test</a>
+      <a class="article-title" href="/2015/04/06/springmvc-test/">使用SpringMVC + Gralde 进行单元测试</a>
     </h1>
   
 
         <div class="article-meta">
           <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2015/04/04/test/">
-    <time datetime="2015-04-04T04:07:31.000Z" itemprop="datePublished">2015-04-04</time>
+  <a href="/2015/04/06/springmvc-test/">
+    <time datetime="2015-04-06T10:22:04.000Z" itemprop="datePublished">2015-04-06</time>
   </a>
 </div>
           
@@ -125,11 +125,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>本教程针对使用 SpringMVC 框架的单元测试，通过本文档，你可以学习到：</p>
+<ol>
+<li>如何编写针对 SpringMVC 框架的 junit 测试用例；</li>
+<li>如何利用 gradle 自动生成测试报告</li>
+</ol>
+<h2 id="1-_编写测试用例">1. 编写测试用例</h2><h3 id="1-1_配置库">1.1 配置库</h3><p>首先看一下 gradle 配置文件中是否有 junit 测试相关包，如果没有的话引入，并 build</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	<span class="built_in">test</span>Compile(</span><br><span class="line">		<span class="string">'junit:junit:4.10'</span>,</span><br><span class="line">		<span class="string">'org.mockito:mockito-all:1.9.5'</span>,</span><br><span class="line">		<span class="string">'org.springframework:spring-test:4.0.5.RELEASE'</span>,</span><br><span class="line">		)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2_配置_springmvc_测试配置文件">1.2 配置 springmvc 测试配置文件</h3><p>实际上是把原始的文档 copy 一份，删除一些不必要的字段，如定时任务等，然后放在测试的配置文件目录下，如下图所示：</p>
+<h3 id="1-3_编写对应的测试用例">1.3 编写对应的测试用例</h3><p>以需要测试的 controller 类 KpiController 为例，在测试资源文件夹下简历测试类 KPIControllerTest；</p>
+<p>然后配置 Mock</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@WebAppConfiguration</span></span><br><span class="line"><span class="annotation">@RunWith</span>(<span class="type">SpringJUnit4ClassRunner</span>.<span class="keyword">class</span>)</span><br><span class="line"><span class="annotation">@ContextConfiguration</span>(<span class="string">"/ibm-dispatcherServlet.xml"</span>)</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">KPIControllerTest</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AbstractTransactionalJUnit4SpringContextTests</span> &#123;</span></span><br><span class="line">	<span class="annotation">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">KPIController</span> kpiController;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">WebApplicationContext</span> wac;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="type">MockMvc</span> mockMvc;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Before</span></span><br><span class="line">	public void setup() &#123;</span><br><span class="line">		<span class="keyword">this</span>.mockMvc = <span class="type">MockMvcBuilders</span>.webAppContextSetup(<span class="keyword">this</span>.wac).build();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后就可以用 Mock 模拟 http 访问了，具体的代码如下：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> testKpiRecentChartData() <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	<span class="keyword">String</span> request = <span class="string">"/KPI/add-kpi/all-table"</span>;</span><br><span class="line">	<span class="comment">// 测试访问特定的接口获取数据</span></span><br><span class="line">	MvcResult rc = <span class="keyword">this</span>.mockMvc</span><br><span class="line">			.perform(</span><br><span class="line">					MockMvcRequestBuilders.<span class="built_in">get</span>(request).accept(</span><br><span class="line">							<span class="string">"application/json"</span>))</span><br><span class="line">			.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();</span><br><span class="line">	<span class="comment">// 获取到访问得到的值</span></span><br><span class="line">	<span class="keyword">String</span> content = rc.getResponse().getContentAsString();</span><br><span class="line">	<span class="comment">//这里可以对返回值做任何 assert</span></span><br><span class="line">	Assert.assertEquals(contetn,<span class="string">""</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以此类推，这样就可以编写你的测试用例了。</p>
+<h3 id="1-4_抽象">1.4 抽象</h3><p>编写了一些用例过后，会发现有些方法是比较通用的，这样可以抽象出来编写一个 Helper 类，重用代码，增加效率。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class TestHelper &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> MvcResult <span class="built_in">get</span>(MockMvc mc, <span class="keyword">String</span> url) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		MvcResult rc = mc</span><br><span class="line">				.perform(</span><br><span class="line">						MockMvcRequestBuilders.<span class="built_in">get</span>(url).accept(</span><br><span class="line">								<span class="string">"application/json"</span>))</span><br><span class="line">				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();</span><br><span class="line">		<span class="keyword">return</span> rc;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">JSONObject</span> checkRcCode(MvcResult mc, <span class="built_in">int</span> httpCode,</span><br><span class="line">			<span class="built_in">int</span> errorCode) <span class="keyword">throws</span> UnsupportedEncodingException &#123;</span><br><span class="line">		Assert.assertEquals(mc.getResponse().getStatus(), httpCode);</span><br><span class="line">		<span class="keyword">JSONObject</span> json = resultToJsonObject(mc.getResponse()</span><br><span class="line">				.getContentAsString());</span><br><span class="line">		Assert.assertEquals(json.<span class="built_in">get</span>(<span class="string">"errorCode"</span>), errorCode);</span><br><span class="line">		<span class="keyword">return</span> json;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">JSONObject</span> resultToJsonObject(<span class="keyword">String</span> rcContent) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">JSONObject</span>(rcContent);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上面所示，这个 Help 类把一些常用的方法，如访问 url、返回值封装 json、验证 http 状态吗等方法封装成静态方法，这样我们的测试就很简单了，如下所示：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">testKpiRecentChartData</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	<span class="comment">//获取最近两个域的数据</span></span><br><span class="line">	String test_url = <span class="string">"/KPIData/ResultSpanData/1?number=2&amp;year=2014&amp;month=10&amp;day=1"</span>;</span><br><span class="line">	MvcResult rc = TestHelper.get(<span class="keyword">this</span>.mockMvc, test_url);</span><br><span class="line">	TestHelper.checkRcCode(rc, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-_Gradle_测试">2. Gradle 测试</h2><p>通过 gradle 这个好用的工具，我们不仅可以 build 项目成为 war 进行发布，而且还可以批量跑我们刚才编写的测试用例，生成测试报告，极大方便了我们的工作。</p>
+<p>首先，进入到项目目录：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gradle build clean -x <span class="keyword">test</span>   <span class="comment">//清空之前 gradle 生成的东西</span></span><br><span class="line">gradle build <span class="keyword">test</span> <span class="comment">// run gradle 的测试</span></span><br></pre></td></tr></table></figure>
+<p>然后会跑一遍所有的测试任务，等待片刻，出现：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">com.tj.controller.<span class="keyword">test</span>.UserControllerTest &gt; testLogin FAILED</span><br><span class="line">    java.lang.IllegalArgumentException at UserControllerTest.java:74</span><br><span class="line"></span><br><span class="line">62 tests completed, 1 failed   </span><br><span class="line">:<span class="keyword">test</span> FAILED</span><br><span class="line"></span><br><span class="line"><span class="comment">* What went wrong:</span></span><br><span class="line">Execution failed <span class="keyword">for</span> task ':<span class="keyword">test</span>'.</span><br><span class="line">&gt; There were failing tests. See the <span class="keyword">report</span> at: <span class="keyword">file</span>:<span class="comment">///Users/globit/git/TongjiIOC/ioc-kpi/build/reports/tests/index.html</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，跑了 62 个测试， 有一个是失败的，失败在 UserControllerTest.java 的 74 行。</p>
+<p>然后可以进入下面给的路径查看报告：</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/04/test/" data-id="ci82j3wqa00015lox1wu3vk6z" class="article-share-link">分享到</a>
+      <a data-url="http://guoylyy.github.io/2015/04/06/springmvc-test/" data-id="ci85v4m9j000112oxfxdk010u" class="article-share-link">分享到</a>
       
       
     </footer>
@@ -179,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/04/hello-world/" data-id="ci82j3wpp00005loxa4hwgfm7" class="article-share-link">分享到</a>
+      <a data-url="http://guoylyy.github.io/2015/04/04/hello-world/" data-id="ci85v4m96000012ox7d6wm4kl" class="article-share-link">分享到</a>
       
       
     </footer>
@@ -197,7 +222,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 John Doe<br>
+      &copy; 2015 globit<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
