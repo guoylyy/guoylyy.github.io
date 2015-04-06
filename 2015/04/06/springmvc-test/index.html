@@ -23,7 +23,7 @@
 
 1. 编写测试用例1.1 配置库首先看一下 gradle 配置文件中是否有 junit 测试相关包，如果没有的话引入，并 build
 1234567dependencies &amp;#123;	testCompil">
-<meta property="og:image" content="../images/report-page.png">
+<meta property="og:image" content="/images/report-page.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用SpringMVC + Gralde 进行单元测试">
 <meta name="twitter:description" content="本教程针对使用 SpringMVC 框架的单元测试，通过本文档，你可以学习到：
@@ -135,7 +135,7 @@
 <h2 id="1-_编写测试用例">1. 编写测试用例</h2><h3 id="1-1_配置库">1.1 配置库</h3><p>首先看一下 gradle 配置文件中是否有 junit 测试相关包，如果没有的话引入，并 build</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	<span class="built_in">test</span>Compile(</span><br><span class="line">		<span class="string">'junit:junit:4.10'</span>,</span><br><span class="line">		<span class="string">'org.mockito:mockito-all:1.9.5'</span>,</span><br><span class="line">		<span class="string">'org.springframework:spring-test:4.0.5.RELEASE'</span>,</span><br><span class="line">		)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="1-2_配置_springmvc_测试配置文件">1.2 配置 springmvc 测试配置文件</h3><p>实际上是把原始的文档 copy 一份，删除一些不必要的字段，如定时任务等，然后放在测试的配置文件目录下，如下图所示：</p>
-<p><img src="../images/report-page.png" alt="img"></p>
+<p><img src="/images/report-page.png" alt="img"></p>
 <h3 id="1-3_编写对应的测试用例">1.3 编写对应的测试用例</h3><p>以需要测试的 controller 类 KpiController 为例，在测试资源文件夹下简历测试类 KPIControllerTest；</p>
 <p>然后配置 Mock</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@WebAppConfiguration</span></span><br><span class="line"><span class="annotation">@RunWith</span>(<span class="type">SpringJUnit4ClassRunner</span>.<span class="keyword">class</span>)</span><br><span class="line"><span class="annotation">@ContextConfiguration</span>(<span class="string">"/ibm-dispatcherServlet.xml"</span>)</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">KPIControllerTest</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AbstractTransactionalJUnit4SpringContextTests</span> &#123;</span></span><br><span class="line">	<span class="annotation">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">KPIController</span> kpiController;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">WebApplicationContext</span> wac;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="type">MockMvc</span> mockMvc;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Before</span></span><br><span class="line">	public void setup() &#123;</span><br><span class="line">		<span class="keyword">this</span>.mockMvc = <span class="type">MockMvcBuilders</span>.webAppContextSetup(<span class="keyword">this</span>.wac).build();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -157,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://guoylyy.github.io/2015/04/06/springmvc-test/" data-id="ci85va8mu00014foxj2j3i69r" class="article-share-link">分享到</a>
+      <a data-url="http://guoylyy.github.io/2015/04/06/springmvc-test/" data-id="ci85vdjw600016poxqwft5joi" class="article-share-link">分享到</a>
       
       
     </footer>
