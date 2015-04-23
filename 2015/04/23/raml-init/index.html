@@ -6,18 +6,18 @@
   <title>RAML - 写项目文档也能有快感 | 莫若以明</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="去年开始，开始在项目中大量使用前后端分离的架构，即后台大量使用 rest api，这样一来，一个项目的前后台编写就分离了，通常是两个人或者两拨人分别负责。 那么随之而来的问题也是比较明显的 —— 前后端的团队交流接口存在了天然的障碍。 由于我们是小团队，项目也充满着变化和不确定性，这样的交流障碍阻碍了项目的进展。
-最初的 rest api 文档解决方案为了解决以上所述的问题，我们起初使用 mark">
+最初的 Rest API 文档解决方案为了解决以上所述的问题，我们起初使用 mark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RAML - 写项目文档也能有快感">
 <meta property="og:url" content="http://guoylyy.github.io/2015/04/23/raml-init/index.html">
 <meta property="og:site_name" content="莫若以明">
 <meta property="og:description" content="去年开始，开始在项目中大量使用前后端分离的架构，即后台大量使用 rest api，这样一来，一个项目的前后台编写就分离了，通常是两个人或者两拨人分别负责。 那么随之而来的问题也是比较明显的 —— 前后端的团队交流接口存在了天然的障碍。 由于我们是小团队，项目也充满着变化和不确定性，这样的交流障碍阻碍了项目的进展。
-最初的 rest api 文档解决方案为了解决以上所述的问题，我们起初使用 mark">
+最初的 Rest API 文档解决方案为了解决以上所述的问题，我们起初使用 mark">
 <meta property="og:image" content="https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RAML - 写项目文档也能有快感">
 <meta name="twitter:description" content="去年开始，开始在项目中大量使用前后端分离的架构，即后台大量使用 rest api，这样一来，一个项目的前后台编写就分离了，通常是两个人或者两拨人分别负责。 那么随之而来的问题也是比较明显的 —— 前后端的团队交流接口存在了天然的障碍。 由于我们是小团队，项目也充满着变化和不确定性，这样的交流障碍阻碍了项目的进展。
-最初的 rest api 文档解决方案为了解决以上所述的问题，我们起初使用 mark">
+最初的 Rest API 文档解决方案为了解决以上所述的问题，我们起初使用 mark">
   
   
   <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
@@ -132,7 +132,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>去年开始，开始在项目中大量使用前后端分离的架构，即后台大量使用 rest api，这样一来，一个项目的前后台编写就分离了，通常是两个人或者两拨人分别负责。 那么随之而来的问题也是比较明显的 —— 前后端的团队交流接口存在了天然的障碍。 由于我们是小团队，项目也充满着变化和不确定性，这样的交流障碍阻碍了项目的进展。</p>
-<h2 id="最初的_rest_api_文档解决方案">最初的 rest api 文档解决方案</h2><p>为了解决以上所述的问题，我们起初使用 markdown 来编写后端接口文档，然后由前端工程师来根据文档说明使用 api，其中 markdown 文档遵循了同意的模板规则，如：</p>
+<h2 id="最初的_Rest_API_文档解决方案">最初的 Rest API 文档解决方案</h2><p>为了解决以上所述的问题，我们起初使用 markdown 来编写后端接口文档，然后由前端工程师来根据文档说明使用 api，其中 markdown 文档遵循了同意的模板规则，如：</p>
 <pre><code><span class="number">1.1</span> xxx 接口
     <span class="function"><span class="keyword">method</span>：<span class="title">post</span>
     <span class="title">url</span>： /<span class="title">login</span>
@@ -148,25 +148,24 @@
 <h2 id="优化的契机_——_RAML">优化的契机 —— RAML</h2><p>而任何的解决方案都存在着相应的问题，用了一段时间过后，我们发现这样的方法有一些弊端：</p>
 <ol>
 <li>规范性差，不同人写出来的格式不相同，造成了阅读困难；</li>
-<li>难以查找，想要查找一个 api， 非常麻烦，需要在 markdown 文档搜索，这对于 api 多一点来说有点麻烦；</li>
+<li>难以查找，想要查找一个 API， 非常麻烦，需要在 Markdown 文档搜索，这对于 API 多一点来说有点麻烦；</li>
 <li>格式编辑困难，只能纯手写，无专业文档工具</li>
 </ol>
 <p>而在这个时候，我无意中看到了 RAML（Rest API Modeling Language），一时之间惊为神器，试用了一下，发现非常适合我们这个前后端文档编写的需求。</p>
-<p>简单说来，<strong>RAML 定义了一个 rest api 的文档编写规范，把 rest 文档标准化了</strong>。 标准化带来的是规范，就是大家写的 rest 文档都一样了，你好我好大家好，就像 xml 一样，可以用程序处理了。这样一来带来了一些好处：</p>
+<p>简单说来，<strong>RAML 定义了一个 Rest API 的文档编写规范，把 Rest 文档标准化了</strong>。 标准化带来的是规范，就是大家写的 Rest 文档都一样了，你好我好大家好，就像 xml 一样，可以用程序处理了。这样一来带来了一些好处：</p>
 <ol>
-<li>我们可以利用工具解析 raml 文档，生成我们想要的格式，比如组织很好的 html；</li>
-<li>我们编写的时候可以有提示工具了（因为标准化了嘛）</li>
-<li>我们阅读的时候更加高效快速无痛苦了（还是因为标准化）。</li>
+<li>我们可以利用工具解析 RAML 文档，生成我们想要的格式，比如组织很好的 html；</li>
+<li>我们编写文档的时候可以有提示工具了（因为标准化了嘛）</li>
+<li>我们阅读的时候更加高效快速无痛苦（还是因为标准化）。</li>
 </ol>
 <h2 id="初识">初识</h2><p>打开任意一个编辑器就可以开始写 raml 文档，写出来过后会如下所示：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">title:</span> Kunshan Dai</span><br><span class="line"><span class="string">baseUri:</span> <span class="string">http:</span><span class="comment">//kunshandai.avosapps.com/&#123;version&#125;</span></span><br><span class="line"><span class="string">version:</span> v1</span><br><span class="line">/<span class="string">account:</span>        </span><br><span class="line">  /<span class="string">login:</span></span><br><span class="line"><span class="label">    post:</span></span><br><span class="line"><span class="label">      queryParameters:</span></span><br><span class="line"><span class="label">        mobilePhoneNumber:</span></span><br><span class="line"><span class="label">          description:</span> |</span><br><span class="line">            mobilePhoneNumber</span><br><span class="line"><span class="label">          type:</span> string</span><br><span class="line"><span class="label">        password:</span></span><br><span class="line"><span class="label">          description:</span> |</span><br><span class="line">            password</span><br><span class="line"><span class="label">          type:</span> string</span><br><span class="line"><span class="label">      responses:</span></span><br><span class="line"><span class="label">        200:</span></span><br><span class="line"><span class="label">          body:</span></span><br><span class="line">            application/<span class="string">json:</span></span><br><span class="line"><span class="label">              schema:</span> |</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">"username"</span>: <span class="string">"18516171260"</span>,</span><br><span class="line">                    <span class="string">"emailVerified"</span>: <span class="literal">false</span>,</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-<p> 这个文档的意思相信大家一看就会明白，定义了一个 api， 它的基础地址是:<strong><a href="http://kunshandai.avosapps.com/v1/" target="_blank" rel="external">http://kunshandai.avosapps.com/v1/</a></strong>, 访问 <strong>/account/login</strong> 接口，采用 <strong>post</strong> 请求，发送 <strong>mobilePhoneNumber</strong> 和 <strong>password</strong> 两个参数，如果成功返回 <strong>200</strong> 和 后面的 <strong>json</strong> 数据。</p>
-<p>非常的直白易懂。</p>
+<p> 这个文档的意思相信大家一看就会明白，定义了一个 api， 它的基础地址是:<strong><a href="http://kunshandai.avosapps.com/v1/" target="_blank" rel="external">http://kunshandai.avosapps.com/v1/</a></strong>, 访问 <strong>/account/login</strong> 接口，采用 <strong>post</strong> 请求，发送 <strong>mobilePhoneNumber</strong> 和 <strong>password</strong> 两个参数，如果成功返回 <strong>200</strong> 和 后面的 <strong>json</strong> 数据。非常的直白易懂。</p>
 <h2 id="生成易读的格式">生成易读的格式</h2><p>上面的文档格式还是不够直观，那么我可以通过工具解析这份文档，生成易读的格式，如 html。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g raml2html </span><br><span class="line">raml2html doc<span class="class">.raml</span> &gt; doc.html</span><br></pre></td></tr></table></figure>
-<p>先安装 <a href="https://www.npmjs.com/package/raml2html" target="_blank" rel="external">raml2html</a> 工具，然后用它来生成 html 并写入到 doc.html 文件中，然后你用浏览器打开 doc 文件，会看到你的文档成为了一个非常漂亮易读的网页格式,如下所示，如果你想玩一玩，可以用我编写的<a href="http://guoylyy.github.io/pages/raml-test.html" target="_blank" rel="external">这个文档</a></p>
+<p>先安装 <a href="https://www.npmjs.com/package/raml2html" target="_blank" rel="external">raml2html</a> 工具，然后用它来生成 html 并写入到 doc.html 文件中，然后你用浏览器打开 doc 文件，会看到你的文档成为了一个非常漂亮易读的网页格式,如下图所示。这个页面就可以发给前端的童鞋们开干了。</p>
 <p><img src="https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png" alt="img"></p>
-<p>然后，这个 html 就可以发给前端的童鞋们开干了。</p>
+<p>如果你想玩一玩，可以用我编写的<a href="http://guoylyy.github.io/pages/raml-test.html" target="_blank" rel="external">这个文档</a>.</p>
 <h2 id="后记">后记</h2><p>借助于标准化的工作和相应的工具，我们可以极大提升团队之间的沟通效率，优化工作流程，虽然只是一点一点小小的优化，但是这样的体验足以让我非常着迷。</p>
 <h2 id="参考资料">参考资料</h2><ul>
 <li><a href="">raml官网</a></li>
@@ -176,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://guoylyy.github.io/2015/04/23/raml-init/" data-id="ci8tzmt870002cioxj0nuljd6" class="article-share-link">分享到</a>
+      <a data-url="http://guoylyy.github.io/2015/04/23/raml-init/" data-id="ci8tzwr800002ejoxaws49ygb" class="article-share-link">分享到</a>
       
       
     </footer>
