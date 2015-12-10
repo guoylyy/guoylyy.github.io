@@ -185,22 +185,22 @@
 </ol>
 <h2 id="初识">初识</h2><p>打开任意一个编辑器就可以开始写 raml 文档，写出来过后会如下所示：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">title:</span> Kunshan Dai</span><br><span class="line"><span class="string">baseUri:</span> <span class="string">http:</span><span class="comment">//kunshandai.avosapps.com/&#123;version&#125;</span></span><br><span class="line"><span class="string">version:</span> v1</span><br><span class="line">/<span class="string">account:</span>        </span><br><span class="line">  /<span class="string">login:</span></span><br><span class="line"><span class="label">    post:</span></span><br><span class="line"><span class="label">      queryParameters:</span></span><br><span class="line"><span class="label">        mobilePhoneNumber:</span></span><br><span class="line"><span class="label">          description:</span> |</span><br><span class="line">            mobilePhoneNumber</span><br><span class="line"><span class="label">          type:</span> string</span><br><span class="line"><span class="label">        password:</span></span><br><span class="line"><span class="label">          description:</span> |</span><br><span class="line">            password</span><br><span class="line"><span class="label">          type:</span> string</span><br><span class="line"><span class="label">      responses:</span></span><br><span class="line"><span class="label">        200:</span></span><br><span class="line"><span class="label">          body:</span></span><br><span class="line">            application/<span class="string">json:</span></span><br><span class="line"><span class="label">              schema:</span> |</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">"username"</span>: <span class="string">"18516171260"</span>,</span><br><span class="line">                    <span class="string">"emailVerified"</span>: <span class="literal">false</span>,</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-<p> 这个文档的意思相信大家一看就会明白，定义了一个 api， 它的基础地址是:<strong><a href="http://kunshandai.avosapps.com/v1/" target="_blank" rel="external">http://kunshandai.avosapps.com/v1/</a></strong>, 访问 <strong>/account/login</strong> 接口，采用 <strong>post</strong> 请求，发送 <strong>mobilePhoneNumber</strong> 和 <strong>password</strong> 两个参数，如果成功返回 <strong>200</strong> 和 后面的 <strong>json</strong> 数据。非常的直白易懂。</p>
+<p> 这个文档的意思相信大家一看就会明白，定义了一个 api， 它的基础地址是:<strong><a href="http://blog.guoyiliang.com/pages/raml-test.html" target="_blank" rel="external">http://kunshandai.avosapps.com/v1/</a></strong>, 访问 <strong>/account/login</strong> 接口，采用 <strong>post</strong> 请求，发送 <strong>mobilePhoneNumber</strong> 和 <strong>password</strong> 两个参数，如果成功返回 <strong>200</strong> 和 后面的 <strong>json</strong> 数据。非常的直白易懂。</p>
 <h2 id="生成易读的格式">生成易读的格式</h2><p>上面的文档格式还是不够直观，那么我可以通过工具解析这份文档，生成易读的格式，如 html。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g raml2html </span><br><span class="line">raml2html doc<span class="class">.raml</span> &gt; doc.html</span><br></pre></td></tr></table></figure>
 <p>先安装 <a href="https://www.npmjs.com/package/raml2html" target="_blank" rel="external">raml2html</a> 工具，然后用它来生成 html 并写入到 doc.html 文件中，然后你用浏览器打开 doc 文件，会看到你的文档成为了一个非常漂亮易读的网页格式,如下图所示。这个页面就可以发给前端的童鞋们开干了。</p>
 <p><img src="https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png" alt="img"></p>
-<p>如果你想玩一玩，可以用我编写的<a href="http://guoylyy.github.io/pages/raml-test.html" target="_blank" rel="external">这个文档</a>.</p>
+<p>如果你想玩一玩，可以用我编写的<a href="http://blog.guoyiliang.com/pages/raml-test.html" target="_blank" rel="external">这个文档</a>.</p>
 <h2 id="后记">后记</h2><p>借助于标准化的工作和相应的工具，我们可以极大提升团队之间的沟通效率，优化工作流程，虽然只是一点一点小小的优化，但是这样的体验足以让我非常着迷。</p>
 <h2 id="参考资料">参考资料</h2><ul>
-<li><a href="">raml官网</a></li>
+<li><a href="http://raml.org/" target="_blank" rel="external">raml官网</a></li>
 <li><a href="https://www.npmjs.com/package/raml2html" target="_blank" rel="external">raml2html说明</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://guoylyy.github.io/2015/04/23/raml-init/" data-id="cig8u49pc0001zvgs2jnm4glm" class="article-share-link">分享到</a>
+      <a data-url="http://guoylyy.github.io/2015/04/23/raml-init/" data-id="cihzp1f7d0001u5gs5tf5desv" class="article-share-link">分享到</a>
       
       
     </footer>
@@ -267,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://guoylyy.github.io/2015/04/06/springmvc-test/" data-id="cig8u49ov0000zvgsrpr3uy7n" class="article-share-link">分享到</a>
+      <a data-url="http://guoylyy.github.io/2015/04/06/springmvc-test/" data-id="cihzp1f6n0000u5gstskgm6qf" class="article-share-link">分享到</a>
       
       
     </footer>
